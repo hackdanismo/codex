@@ -21,7 +21,67 @@ In `Statamic` templating is handled by `Antlers`, a built-in `Laravel` optimised
 The frontend design is separated into three logical layers: `Layouts`, `Templates`, and `Partials`.
 
 ## Components
-The components within a `Statamic` project will be found in the project folder here: `resources/views/partials`.
+The components within a `Statamic` project will be found in the project folder here: `resources/views/partials`. There are two main ways to build a component:
+
+- `Antlers Partial` - a reusable frontend component, such as a button, card, hero, or navigation.
+- `Replicator Set` - a component that content editors can add, edit, and reorder through the Statamic Control Panel.
+
+A component usually has the file extension of: `.antlers.html`.
+
+### Create a Component
+Begin by creating a new component file inside of `resources/views/components`:
+
+```
+resources/
+└── views/
+    ├── components/
+    │   ├── _hero.antlers.html
+    │   ├── _button.antlers.html
+    │   ├── _card.antlers.html
+    │   └── _testimonial.antlers.html
+    ├── layouts/
+    │   └── layout.antlers.html
+    ├── partials/
+    │   ├── _header.antlers.html
+    │   └── _footer.antlers.html
+    └── page.antlers.html
+```
+
+Inside of the component file, `example_component.antlers.html`, write the component. Here is an example `_hero.antlers.html` component:
+
+```html
+<section class="bg-gray-100 py-20">
+    <div class="container mx-auto">
+        <h1 class="text-4xl font-bold">
+            {{ heading }}
+        </h1>
+
+        <p class="mt-4 text-lg">
+            {{ description }}
+        </p>
+
+        {{ if button_url }}
+            <a href="{{ button_url }}"
+               class="inline-block mt-6 bg-blue-600 text-white px-6 py-3 rounded">
+                {{ button_text }}
+            </a>
+        {{ /if }}
+    </div>
+</section>
+```
+
+Open a page template to render the component, such as: `resources/views/page.antlers.html`, and add:
+
+```html
+{{ partial:components/hero
+    heading="Welcome to our website"
+    description="We build amazing digital experiences."
+    button_text="Get Started"
+    button_url="/contact"
+}}
+```
+
+`Statamic` automatically loads the partial and passes the values into it. This component is not editable in the `Statamic Control Panel`. To do this we need to use a `Replicator field`.
 
 ## Tailwind CSS
 `Tailwind CSS` is the preferred, industry-standard styling framework used by `Statamic`. The backend control panel itself is styled entirely with `Tailwind CSS` and built using `Vue`. Almost all of the official `Statamic Starter Kits` come with `Tailwind` pre-configured out of the box.
