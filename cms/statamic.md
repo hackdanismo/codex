@@ -60,7 +60,7 @@ Inside of the component file, `example_component.antlers.html`, write the compon
             {{ description }}
         </p>
 
-        {{ if button_url }}
+        {{ if button_url && button_text }}
             <a href="{{ button_url }}"
                class="inline-block mt-6 bg-blue-600 text-white px-6 py-3 rounded">
                 {{ button_text }}
@@ -69,6 +69,8 @@ Inside of the component file, `example_component.antlers.html`, write the compon
     </div>
 </section>
 ```
+
+This checks both button fields before rendering.
 
 Open a page template to render the component, such as: `resources/views/page.antlers.html`, and add:
 
@@ -81,7 +83,48 @@ Open a page template to render the component, such as: `resources/views/page.ant
 }}
 ```
 
-`Statamic` automatically loads the partial and passes the values into it. This component is not editable in the `Statamic Control Panel`. To do this we need to use a `Replicator field`.
+`Statamic` automatically loads the partial and passes the values into it. This component is not editable in the `Statamic Control Panel`. To allow the component content to be added from within the `Statamic Control Panel`, just like how a `CMS` works, we can use a `YAML Blueprint`. In our component, this will be named: `hero.yaml` and the file should be placed here: `resources/fieldsets/hero.yaml`. This file should contain the fields for the content:
+
+```yaml
+
+title: Hero
+
+fields:
+  -
+    handle: heading
+    field:
+      type: text
+      display: Heading
+      validate:
+        - required
+
+  -
+    handle: description
+    field:
+      type: textarea
+      display: Description
+
+  -
+    handle: button_text
+    field:
+      type: text
+      display: Button Text
+
+  -
+    handle: button_url
+    field:
+      type: link
+      display: Button URL
+```
+
+Then import it into your page's existing `Blueprint`, for example: `resources/blueprints/collections/pages/page.yaml`
+
+```yaml
+-
+  import: hero
+```
+
+This makes the four fields available when editing pages that use that Blueprint.
 
 ## Tailwind CSS
 `Tailwind CSS` is the preferred, industry-standard styling framework used by `Statamic`. The backend control panel itself is styled entirely with `Tailwind CSS` and built using `Vue`. Almost all of the official `Statamic Starter Kits` come with `Tailwind` pre-configured out of the box.
