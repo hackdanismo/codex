@@ -85,7 +85,7 @@ boo();
 ```
 
 ### IIFE
-An `IIFE` is a `JavaScript` function that executes immediately after it is defined, without needing to call it separately. We don't need to call the function separately. It executes automatically.
+An `IIFE (Immediately Invoked Function Expression)` is a `JavaScript` function that executes immediately after it is defined, without needing to call it separately. We don't need to call the function separately. It executes automatically.
 
 ```javascript
 (() => {
