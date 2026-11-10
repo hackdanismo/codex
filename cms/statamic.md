@@ -126,5 +126,56 @@ Then import it into your page's existing `Blueprint`, for example: `resources/bl
 
 This makes the four fields available when editing pages that use that Blueprint.
 
+`Statamic` has a built-in `Replicator` that lets you add components, duplicate them, drag them into a different order, and automatically render them in that order on your website. This is created inside of the `resources/blueprints/collections/pages/page.yaml` YAML file adding a `page_builder` field to a section of the existing page Blueprint:
+
+```yaml
+-
+  handle: page_builder
+  field:
+    type: replicator
+    display: Page Builder
+    button_label: Add Component
+    sets:
+      content:
+        display: Content Components
+        sets:
+          hero:
+            display: Hero
+            fields:
+              -
+                handle: heading
+                field:
+                  type: text
+                  display: Heading
+              -
+                handle: description
+                field:
+                  type: textarea
+                  display: Description
+              -
+                handle: button_text
+                field:
+                  type: text
+                  display: Button Text
+              -
+                handle: button_url
+                field:
+                  type: link
+                  display: Button URL
+          text_block:
+            display: Text Block
+            fields:
+              -
+                handle: heading
+                field:
+                  type: text
+                  display: Heading
+              -
+                handle: body
+                field:
+                  type: markdown
+                  display: Content
+```
+
 ## Tailwind CSS
 `Tailwind CSS` is the preferred, industry-standard styling framework used by `Statamic`. The backend control panel itself is styled entirely with `Tailwind CSS` and built using `Vue`. Almost all of the official `Statamic Starter Kits` come with `Tailwind` pre-configured out of the box.
