@@ -59,3 +59,27 @@ const boo = name => {
 // Call the function to execute the code block
 boo("Dan");
 ```
+
+A function can have multiple `arguments` and `parameters`. If a function has more than one `parameter`, braces are needed.
+
+```javascript
+const boo = (name, age) => {
+    console.log(`Hello, ${name}. You are ${age} years old.`);    // Hello, Dan. You are 40 years old.
+}
+
+// Call the function to execute the code block
+boo("Dan", 41);
+```
+
+### Default Parameter Values
+Default `parameter` values can be used in-place of values being passed as `arguments` so should a function be called without a value passed, the default value will be used.
+
+```javascript
+// Use the default parameter values
+const boo = (name = "Peat", age = 9) => {
+    console.log(`Hello, ${name}. You are ${age} years old.`);    // Hello, Peat. You are 9 years old.
+}
+
+// Call the function to execute the code block without values
+boo();
+```
