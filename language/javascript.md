@@ -83,3 +83,40 @@ const boo = (name = "Peat", age = 9) => {
 // Call the function to execute the code block without values
 boo();
 ```
+
+### IIFE
+An `IIFE` is a `JavaScript` function that executes immediately after it is defined, without needing to call it separately. We don't need to call the function separately. It executes automatically.
+
+```javascript
+(() => {
+    console.log("This is an IIFE.");
+})();
+```
+
+This can also be writted with the `function` keyword instead of the arrow function syntax:
+
+```javascript
+(function () {
+    console.log("This is an IIFE.");
+})();
+```
+
+Just like regular functions, an `IIFE` can accept parameters.
+
+```javascript
+((name, age) => {
+    console.log(`Hello, ${name}. You are ${age} years old.`);
+})("Peat", 9);
+```
+
+One important reason to use an `IIFE` is to keep `variables` private to the function, so they don't interfere with variables outside it. The message `variable` only exists inside the `IIFE`.
+
+```javascript
+(() => {
+    // This is a private variable and only available from inside the IIFE
+    const message = "Hello, Peat!";
+    console.log(message);
+})();
+
+console.log(message); // ReferenceError
+```
