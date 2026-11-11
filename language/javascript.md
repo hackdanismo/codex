@@ -23,6 +23,17 @@ const boo = () => {
 boo();
 ```
 
+A function can be written in shorthand, as with this `multiple` example, without the brackets:
+
+```
+const multiply = (x, y) => x * y;
+
+// Call the function to execute the code block
+console.log(multiply(4, 3));    // Output: 12
+```
+
+Introduced in `ES6`, these are the most popular ways to write a function. They are commonly used for array methods like `.map()` or `.filter()`. 
+
 ## Parameters and Arguments
 In `JavaScript`, `parameters` are variables that allow you to pass information into a function. Think of `parameters` as placeholders for values that a function will use when it runs. In this example, the `parameter` is `name`.
 
