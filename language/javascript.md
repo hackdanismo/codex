@@ -34,7 +34,7 @@ console.log(multiply(4, 3));    // Output: 12
 
 Introduced in `ES6`, these are the most popular ways to write a function. They are commonly used for array methods like `.map()` or `.filter()`. 
 
-## Parameters and Arguments
+### Parameters and Arguments
 In `JavaScript`, `parameters` are variables that allow you to pass information into a function. Think of `parameters` as placeholders for values that a function will use when it runs. In this example, the `parameter` is `name`.
 
 ```javascript
@@ -82,7 +82,7 @@ const boo = (name, age) => {
 boo("Dan", 41);
 ```
 
-### Default Parameter Values
+#### Default Parameter Values
 Default `parameter` values can be used in-place of values being passed as `arguments` so should a function be called without a value passed, the default value will be used.
 
 ```javascript
@@ -130,4 +130,18 @@ One important reason to use an `IIFE` is to keep `variables` private to the func
 })();
 
 console.log(message); // ReferenceError
+```
+
+### Return
+The `return` statement is used to send a value back to the code that called the `function` and stopping the execution of the function immediately. The most common use of `return` is to output a result.
+
+```javascript
+function add(a, b) {
+    return a + b;    // This sends the sum back to the caller
+}
+
+// The value is returned and stored in the sum variable
+let sum = add(5, 10);
+// Output the value stored in the variable, which is 15
+console.log(sum);
 ```
