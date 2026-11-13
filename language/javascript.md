@@ -1,4 +1,14 @@
 # JavaScript
+`JavaScript` files usually end with the `.js` file extension.
+
+To add a `JavaScript` file to `.html` document, use a `<script>` tag before the closing `</body>` tag.
+
+```html
+<script src="script.js"></script>
+
+</body>
+</html>
+```
 
 ## Functions
 `Functions` are reusable blocks of code. A `function` in `JavaScript` is usually declared with the `function` keyword followed by the name of the function, called the `identifier`.
