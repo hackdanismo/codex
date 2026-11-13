@@ -132,6 +132,35 @@ One important reason to use an `IIFE` is to keep `variables` private to the func
 console.log(message); // ReferenceError
 ```
 
+In the context of a `JavaScript library`, it is used to create a `Private Scope`. Using an `IIFE` to create a library:
+
+- To build a simple utility library, like a math helper or string formatter.
+- To keep variables `"private"` so they don't leak into the global window object.
+- Targetting a "Vanilla JS" environment where users just want to include a script tag.
+
+For example:
+
+```javascript
+// IIFE function that runs as soon as it is defined
+const MyLibrary = (function() {
+    // Private variables, hidden from users
+    const privateKey = "SECRET_123";
+
+    // Public methods
+    function sayHello() {
+        return "Hello from the library.";
+    }
+
+    // Return what we want the public users to see
+    return {
+        sayHello: sayHello
+    };
+})();
+
+console.log(MyLibrary.sayHello());    // Works
+console.log(MyLibrary.privateKey);    // Undefined, as expected
+```
+
 ### Return
 The `return` statement is used to send a value back to the code that called the `function` and stopping the execution of the function immediately. The most common use of `return` is to output a result.
 
@@ -144,4 +173,11 @@ function add(a, b) {
 let sum = add(5, 10);
 // Output the value stored in the variable, which is 15
 console.log(sum);
+```
+
+If you are using `Arrow Functions` with a single line of code, we can use an `implicit return`. This means we don't need the word `return`.
+
+```javascript
+// Implicit return, no return statement needed
+const multiply = (a, b) => a * b;
 ```
