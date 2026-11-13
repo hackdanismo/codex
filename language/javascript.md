@@ -25,7 +25,7 @@ boo();
 
 A function can be written in shorthand, as with this `multiple` example, without the brackets:
 
-```
+```javascript
 const multiply = (x, y) => x * y;
 
 // Call the function to execute the code block
