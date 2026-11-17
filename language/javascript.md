@@ -10,6 +10,18 @@ To add a `JavaScript` file to `.html` document, use a `<script>` tag before the 
 </html>
 ```
 
+## Variables
+`Variables` in `JavaScript` are usually declared with the keyword `var`, although using modern syntax, variables are now declared using either `const` or `let` which is preferred over `var`, which is considered legacy.
+
+```javascript
+// Legacy
+var name = "Dan";
+
+// Modern syntax
+let age = 41
+const show = true;
+```
+
 ## Functions
 `Functions` are reusable blocks of code. A `function` in `JavaScript` is usually declared with the `function` keyword followed by the name of the function, called the `identifier`.
 
